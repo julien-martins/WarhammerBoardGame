@@ -1,6 +1,7 @@
-﻿public class DamageGrid
+﻿[System.Serializable]
+public class DamageGrid
 {
-    private string v;
+    public string v;
 
     public DamageGrid(string v)
     {

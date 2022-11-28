@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
+  m_Name: Deathripper
+  m_EditorClassIdentifier: 
+  _spd: 7
+  _str: 7
+  _mat: 5
+  _rat: 5
+  _def: 14
+  _arm: 14
+  isOnFire: 0
+  isKnockedDown: 0
+  isDisrupted: 0
+  listOfWeapons:
+  - name: Mandibule
+    isRanged: 0
+    rng: 0.5
+    pow: 5
+    correspondingWorkingPart: 2
+  faction: 2
+  dmgGrid:
+    v: 
+  isArcNode: 1
+  workingParts: 01010100010001

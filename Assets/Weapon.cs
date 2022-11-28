@@ -1,12 +1,14 @@
-﻿public class Weapon
+﻿[System.Serializable]
+
+public class Weapon
 {
 
-
-    string name;
-    bool isRanged;
-    float rng;
-    int pow;
-    int correspondingWorkingPart;
+    
+    public string name;
+    public bool isRanged;
+    public float rng;
+    public int pow;
+    public int correspondingWorkingPart;
 
 
 

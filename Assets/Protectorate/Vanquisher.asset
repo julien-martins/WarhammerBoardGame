@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
+  m_Name: Vanquisher
+  m_EditorClassIdentifier: 
+  _spd: 4
+  _str: 11
+  _mat: 6
+  _rat: 5
+  _def: 10
+  _arm: 19
+  isOnFire: 0
+  isKnockedDown: 0
+  isDisrupted: 0
+  listOfWeapons:
+  - name: Flame Belcher
+    isRanged: 1
+    rng: 10
+    pow: 14
+    correspondingWorkingPart: 3
+  - name: Blazing Star
+    isRanged: 0
+    rng: 2
+    pow: 5
+    correspondingWorkingPart: 5
+  faction: 0
+  dmgGrid:
+    v: 
+  isArcNode: 0
+  workingParts: 00010001010101

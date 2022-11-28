@@ -22,7 +22,7 @@ public class Deathripper : Warjack
         this.isArcNode = true;
         this.isDisrupted = false;
         //ACHLMRN
-        this.workingParts = new List<bool>() { true, true, true, false, true, false, true };
+        this.workingParts = new List<bool>() { true,true, true, false, true, false, true  };
 
         this.listOfWeapons = new List<Weapon>() { new Weapon("Mandibule", false, 0.5f, 5, 2)};
 

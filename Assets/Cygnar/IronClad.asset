@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
+  m_Name: IronClad
+  m_EditorClassIdentifier: 
+  _spd: 5
+  _str: 11
+  _mat: 7
+  _rat: 5
+  _def: 12
+  _arm: 18
+  isOnFire: 0
+  isKnockedDown: 0
+  isDisrupted: 0
+  listOfWeapons:
+  - name: Quake Hammer
+    isRanged: 0
+    rng: 1
+    pow: 7
+    correspondingWorkingPart: 3
+  - name: Open Fist
+    isRanged: 0
+    rng: 1
+    pow: 3
+    correspondingWorkingPart: 5
+  faction: 1
+  dmgGrid:
+    v: 
+  isArcNode: 0
+  workingParts: 00010001010101

@@ -7,8 +7,8 @@ public class Warjack : Unit
 {
 
     public DamageGrid dmgGrid;
-    protected bool isArcNode;
-    protected List<bool> workingParts;
+    public bool isArcNode;
+    public List<bool> workingParts;
 
 
 }
