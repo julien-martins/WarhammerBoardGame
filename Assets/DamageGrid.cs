@@ -21,11 +21,11 @@ public class DamageGrid
         // name == "Dr Charles", lives == 3, and health == 0.8f.
     }
 
-    public char[][] CreateFromJSON(string jsonString)
+  /*  public char[][] CreateFromJSON(string jsonString)
     {
 
-        return JsonUtility.FromJson<PlayerInfo>(jsonString);
+        //return JsonUtility.FromJson<PlayerInfo>(jsonString);
     }
-
+*/
 }
 

@@ -8,9 +8,9 @@ public class Warcasters : Unit
 {
     public int Focus;
     public int lifePoints;
+    public List<Warjack> warjackBattleGroup;
 
 
-
-
+    
 
 }

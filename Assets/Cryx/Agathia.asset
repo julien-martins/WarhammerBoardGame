@@ -28,5 +28,6 @@ MonoBehaviour:
     pow: 6
     correspondingWorkingPart: 6
   faction: 2
+  workingParts: 01010101010101
   Focus: 7
   lifePoints: 16
