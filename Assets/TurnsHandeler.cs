@@ -14,8 +14,11 @@ public class TurnsHandeler : MonoBehaviour
     
     public Phase phase;
 
-    
-    
+    private void FixedUpdate()
+    {
+        
+    }
+
     public void NewRoundStarts(Warcasters currentController)
     {
         phase = Phase.Maintenance;
@@ -50,7 +53,7 @@ public class TurnsHandeler : MonoBehaviour
                 currentController.isOnFire = false;
             }
         }
-        phase = Phase.Control;
+        BegginingCommandPhase(currentController);
 
     }
     // Start is called before the first frame update
@@ -65,10 +68,23 @@ public class TurnsHandeler : MonoBehaviour
         
     }
 
-    public void ControlPhase(Warcasters currentController)
+    public void BegginingCommandPhase(Warcasters currentController)
         //Check captures 
         
     {
+        foreach(Warjack jack in currentController.warjackBattleGroup)
+        {
+            if (jack.isOnFire)
+            {
+                jack.TakesDamage(12 + FightManager.RollDices(false, false).Item1, Random.Range(1, 6));
+            }
+
+            jack.isDisrupted = false;
+            
+        }
+        currentController.isDisrupted = false;
+
+        phase = Phase.Control;
     }
 
     public void moveFocus(Warcasters currentController, Warjack currentWarjack)

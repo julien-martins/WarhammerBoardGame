@@ -9,13 +9,11 @@ public class FightManager : MonoBehaviour
 
 {
 
-    private int _dicesToRoll;
-    private bool _isCritique;
+    private bool isCritique;
 
     private void Start()
     {
 
-        _dicesToRoll = 1;
     }
 
 
@@ -30,29 +28,39 @@ public class FightManager : MonoBehaviour
     {
         if (weapon.isRanged)
         {
+            (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
+            IsHitBoosted(attacking));
+
+
             if (attacked.def <= attacking.rat +
-                RollDices(attacking.workingParts[weapon.correspondingWorkingPart], IsHitBoosted(attacking)))
+                tupleResultRoll.Item1)
                 //Special effects
+                if (tupleResultRoll.Item2)
+                    //Is a crit!
+                    ;
                 
                 
                 attacked.TakesDamage(
                     weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking)) -
+                        IsDamageBoosted(attacking)).Item1 -
                     attacked.arm, Random.Range(1, 6));
         }
         else
         {
-            if (attacked.def <= attacking.mat + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                    IsHitBoosted(attacking)))
+            (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
+                    IsHitBoosted(attacking));
+            if (attacked.def <= attacking.mat + tupleResultRoll.Item1)
                 //Special effects
+                if (tupleResultRoll.Item2)
+                    //is a crit!
+                    ;
 
                 
                 attacked.TakesDamage(
                     weapon.pow + attacking.str + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking)) - attacked.arm, Random.Range(1, 6));
+                        IsDamageBoosted(attacking)).Item1 - attacked.arm, Random.Range(1, 6));
         }
 
-        _isCritique = false;
 
 
 
@@ -72,12 +80,11 @@ public class FightManager : MonoBehaviour
         }
         else return false;
     }
-
-    public int RollDices(bool isCrippled, bool isBoosted)
+    public static (int,bool) RollDices(bool isCrippled, bool isBoosted)
     {
         int[] rolls = new int[3];
-
-        _dicesToRoll = 1;
+        bool isCritique = false;
+        int _dicesToRoll = 1;
         int rollResult = 0;
         if (!isCrippled)
             _dicesToRoll += 1;
@@ -94,7 +101,7 @@ public class FightManager : MonoBehaviour
                 {
                     if (rolls[indexDices] == rolls[indexCrit])
                     {
-                        _isCritique = true;
+                        isCritique = true;
                     }
                 }
             }
@@ -102,10 +109,11 @@ public class FightManager : MonoBehaviour
         }
 
 
-        return rollResult;
+        return (rollResult,isCritique);
 
 
     }
+
 
     private bool IsHitBoosted(Unit attacking)
     {
