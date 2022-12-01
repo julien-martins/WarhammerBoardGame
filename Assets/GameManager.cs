@@ -39,6 +39,14 @@ public class GameManager : MonoBehaviour
     
         return _actualWarcaster;
     }
+    public Warcasters getActualEnemyCaster()
+    {
+
+        if (_listWarcaster[0] == _actualWarcaster)
+            return _listWarcaster[1];
+        else
+            return _listWarcaster[0];
+    }
 
 
     private void Awake()

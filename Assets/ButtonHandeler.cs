@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ButtonHandeler : MonoBehaviour
 {
-    // Start is called before the first frame update
     public bool isBoostingDmg;
     public bool isBoostingHit;
     public bool isUsingFocus;
@@ -13,6 +12,10 @@ public class ButtonHandeler : MonoBehaviour
     public Unit currentEnemy;
     public Weapon currentWeapon;
     private Phase _phaseToCome;
+
+
+
+    public int _currentWeaponToCome;
 
 
     [SerializableField]
@@ -24,6 +27,7 @@ public class ButtonHandeler : MonoBehaviour
 
     private void BegginNewTurn()
     {
+        _currentWeaponToCome = -1;
         isBoostingDmg = false;
         isBoostingHit = false;
         isUsingFocus = false;
@@ -49,7 +53,18 @@ public class ButtonHandeler : MonoBehaviour
         _phaseToCome = Phase.Control;
 
     }
-    void AcceptButton()
+
+
+
+    /*
+     {
+            if (_currentUnitToCome.listOfWeapons.Count >= currentWeaponToCome +1)
+                currentWeaponToCome = _currentUnitToCome.listOfWeapons[currentWeaponToCome];
+        }
+     
+     */
+
+    public void AcceptButton()
     {
         switch (_phaseToCome)
         {
@@ -59,8 +74,7 @@ public class ButtonHandeler : MonoBehaviour
 
 
             case Phase.Control:
-                Debug.Log("cum");
-                break;
+                
 
 
             case Phase.Activation:
@@ -76,63 +90,108 @@ public class ButtonHandeler : MonoBehaviour
 
     }
 
-    void BoostHit()
-    {
-        
+
+
+    public int countFocusUnit1() {
+        return 3;
     }
-    void BoostDMG()
+    public int countFocusUnit2()
     {
-
+        return 1;
     }
-
-    void UseFocus()
+    public int countFocusUnit3()
     {
-
-    }
-
-    void AttackOne()
-    {
+        return 1;
 
     }
-    void AttackTwo()
+    public int countFocusUnit4()
     {
-
-    }
-    void AttackThree()
-    {
+        return 1;
 
     }
 
-    void Unit1()
+    public void BoostHit()
     {
+        isBoostingHit = true;
+    }
+    public void BoostDMG()
+    {
+        isBoostingDmg= true;
 
     }
-    void Unit2()
+
+    public void UseFocus()
     {
+        isUsingFocus = true;
+    }
+
+    public void UnBoostHit()
+    {
+        isBoostingHit = false;
+    }
+    public void UnBoostDMG()
+    {
+        isBoostingDmg = false;
 
     }
-    void Unit3()
+
+    public void UnUseFocus()
     {
+        isUsingFocus = false;
+    }
+
+    public void AttackOne()
+    {
+        _currentWeaponToCome = 0;
+       
+    }
+    public void AttackTwo()
+    {
+        _currentWeaponToCome = 1;
+
+       
+    }
+    public void AttackThree()
+    {
+        _currentWeaponToCome = 2;
+
 
     }
-    void Unit4()
+
+    public void Unit1()
     {
+        currentUnit = GameManager.Instance.getActualWarcaster();
+    }
+    public void Unit2()
+    {
+        currentUnit = GameManager.Instance.getActualWarcaster().warjackBattleGroup[0];
 
     }
-    void Enemy1()
+    public void Unit3()
     {
+        currentUnit = GameManager.Instance.getActualWarcaster().warjackBattleGroup[1];
+    }
+    public void Unit4()
+    {
+        currentUnit = GameManager.Instance.getActualWarcaster().warjackBattleGroup[2];
+    }
+    public void Enemy1()
+    {
+        currentEnemy = GameManager.Instance.getActualEnemyCaster();
 
     }
-    void Enemy2()
+    public void Enemy2()
     {
+        currentEnemy = GameManager.Instance.getActualEnemyCaster().warjackBattleGroup[0];
 
     }
-    void Enemy3()
+    public void Enemy3()
     {
-
+        currentEnemy = GameManager.Instance.getActualEnemyCaster().warjackBattleGroup[1];
     }
-    void Enemy4()
+    public void Enemy4()
     {
+        currentEnemy = GameManager.Instance.getActualEnemyCaster().warjackBattleGroup[2];
 
     }
 }
