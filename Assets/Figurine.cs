@@ -7,8 +7,7 @@ public class Figurine : MonoBehaviour
     public Unit unitData;
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
     }
 }

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67264b56ebf7d409e1ef5e63017765, type: 3}
   m_Name: Kreoss
   m_EditorClassIdentifier: 
-  _spd: 5
-  _str: 7
-  _mat: 7
-  _rat: 4
-  _def: 14
-  _arm: 16
+  spd: 5
+  str: 7
+  mat: 7
+  rat: 4
+  def: 14
+  arm: 16
   isOnFire: 0
   isKnockedDown: 0
   isDisrupted: 0
@@ -29,5 +29,10 @@ MonoBehaviour:
     correspondingWorkingPart: 6
   faction: 0
   workingParts: 01010101010101
+  actualFocus: 0
   Focus: 7
   lifePoints: 18
+  warjackBattleGroup:
+  - {fileID: 11400000, guid: 058d5c26ebb82c1449a360119fa04fd9, type: 2}
+  - {fileID: 11400000, guid: 6f3bab740b6df8f4e81582f8c686daeb, type: 2}
+  - {fileID: 11400000, guid: 56732ad111a43a64aaf0407d183798f1, type: 2}

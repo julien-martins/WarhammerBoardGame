@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67264b56ebf7d409e1ef5e63017765, type: 3}
   m_Name: Maddox
   m_EditorClassIdentifier: 
-  _spd: 6
-  _str: 6
-  _mat: 7
-  _rat: 6
-  _def: 15
-  _arm: 16
+  spd: 6
+  str: 6
+  mat: 7
+  rat: 6
+  def: 15
+  arm: 16
   isOnFire: 0
   isKnockedDown: 0
   isDisrupted: 0
@@ -34,5 +34,10 @@ MonoBehaviour:
     correspondingWorkingPart: 6
   faction: 1
   workingParts: 01010101010101
+  actualFocus: 0
   Focus: 6
   lifePoints: 16
+  warjackBattleGroup:
+  - {fileID: 11400000, guid: b3592b4a56c74d349859e5141fc6127f, type: 2}
+  - {fileID: 11400000, guid: f987399bad98c9f4a931056c895c6b06, type: 2}
+  - {fileID: 11400000, guid: c1aa71b68a1ecf1478aa96efc5750bee, type: 2}

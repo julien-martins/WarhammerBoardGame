@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
   m_Name: FireFly
   m_EditorClassIdentifier: 
-  _spd: 6
-  _str: 9
-  _mat: 6
-  _rat: 6
-  _def: 13
-  _arm: 16
+  spd: 6
+  str: 9
+  mat: 6
+  rat: 6
+  def: 13
+  arm: 16
   isOnFire: 0
   isKnockedDown: 0
   isDisrupted: 0
@@ -33,7 +33,8 @@ MonoBehaviour:
     pow: 4
     correspondingWorkingPart: 5
   faction: 1
+  workingParts: 00010001010101
+  actualFocus: 0
   dmgGrid:
     v: 
   isArcNode: 0
-  workingParts: 00010001010101

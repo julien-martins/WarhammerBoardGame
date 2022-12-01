@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ButtonHandeler : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class ButtonHandeler : MonoBehaviour
 
 
 
-    public int _currentWeaponToCome;
+    [FormerlySerializedAs("_currentWeaponToCome")] public int currentWeaponToCome;
 
 
-    [SerializableField]
-    TurnsHandeler turnHandeler;
+   
+     private TurnsHandeler _turnHandeler;
     private void Start()
     {
         BegginNewTurn();
@@ -27,7 +28,8 @@ public class ButtonHandeler : MonoBehaviour
 
     private void BegginNewTurn()
     {
-        _currentWeaponToCome = -1;
+        _turnHandeler = new TurnsHandeler();
+        currentWeaponToCome = -1;
         isBoostingDmg = false;
         isBoostingHit = false;
         isUsingFocus = false;
@@ -35,20 +37,21 @@ public class ButtonHandeler : MonoBehaviour
         currentEnemy = null;
         currentWeapon = null;
         GameManager.Instance.PassTurn();
-        turnHandeler.phase = Phase.Maintenance;
+        _turnHandeler.NewRoundStarts();
+
     }
 
-    void ControlPhase()
+    public void ControlPhase()
     {
         _phaseToCome = Phase.Control;
     }
-    void MaintenancePhase()
+    public void MaintenancePhase()
     {
         //New Turn
         _phaseToCome = Phase.Maintenance;
 
     }
-    void ActivationPhase()
+    public void ActivationPhase()
     {
         _phaseToCome = Phase.Control;
 
@@ -92,19 +95,19 @@ public class ButtonHandeler : MonoBehaviour
 
 
 
-    public int countFocusUnit1() {
+    public int CountFocusUnit1() {
         return 3;
     }
-    public int countFocusUnit2()
+    public int CountFocusUnit2()
     {
         return 1;
     }
-    public int countFocusUnit3()
+    public int CountFocusUnit3()
     {
         return 1;
 
     }
-    public int countFocusUnit4()
+    public int CountFocusUnit4()
     {
         return 1;
 
@@ -142,56 +145,56 @@ public class ButtonHandeler : MonoBehaviour
 
     public void AttackOne()
     {
-        _currentWeaponToCome = 0;
+        currentWeaponToCome = 0;
        
     }
     public void AttackTwo()
     {
-        _currentWeaponToCome = 1;
+        currentWeaponToCome = 1;
 
        
     }
     public void AttackThree()
     {
-        _currentWeaponToCome = 2;
+        currentWeaponToCome = 2;
 
 
     }
 
     public void Unit1()
     {
-        currentUnit = GameManager.Instance.getActualWarcaster();
+        currentUnit = GameManager.Instance.GetActualWarcaster();
     }
     public void Unit2()
     {
-        currentUnit = GameManager.Instance.getActualWarcaster().warjackBattleGroup[0];
+        currentUnit = GameManager.Instance.GetActualWarcaster().warjackBattleGroup[0];
 
     }
     public void Unit3()
     {
-        currentUnit = GameManager.Instance.getActualWarcaster().warjackBattleGroup[1];
+        currentUnit = GameManager.Instance.GetActualWarcaster().warjackBattleGroup[1];
     }
     public void Unit4()
     {
-        currentUnit = GameManager.Instance.getActualWarcaster().warjackBattleGroup[2];
+        currentUnit = GameManager.Instance.GetActualWarcaster().warjackBattleGroup[2];
     }
     public void Enemy1()
     {
-        currentEnemy = GameManager.Instance.getActualEnemyCaster();
+        currentEnemy = GameManager.Instance.GetActualEnemyCaster();
 
     }
     public void Enemy2()
     {
-        currentEnemy = GameManager.Instance.getActualEnemyCaster().warjackBattleGroup[0];
+        currentEnemy = GameManager.Instance.GetActualEnemyCaster().warjackBattleGroup[0];
 
     }
     public void Enemy3()
     {
-        currentEnemy = GameManager.Instance.getActualEnemyCaster().warjackBattleGroup[1];
+        currentEnemy = GameManager.Instance.GetActualEnemyCaster().warjackBattleGroup[1];
     }
     public void Enemy4()
     {
-        currentEnemy = GameManager.Instance.getActualEnemyCaster().warjackBattleGroup[2];
+        currentEnemy = GameManager.Instance.GetActualEnemyCaster().warjackBattleGroup[2];
 
     }
 }

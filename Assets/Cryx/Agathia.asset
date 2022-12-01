@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67264b56ebf7d409e1ef5e63017765, type: 3}
   m_Name: Agathia
   m_EditorClassIdentifier: 
-  _spd: 6
-  _str: 6
-  _mat: 7
-  _rat: 4
-  _def: 15
-  _arm: 15
+  spd: 6
+  str: 6
+  mat: 7
+  rat: 4
+  def: 15
+  arm: 15
   isOnFire: 0
   isKnockedDown: 0
   isDisrupted: 0
@@ -29,5 +29,10 @@ MonoBehaviour:
     correspondingWorkingPart: 6
   faction: 2
   workingParts: 01010101010101
+  actualFocus: 0
   Focus: 7
   lifePoints: 16
+  warjackBattleGroup:
+  - {fileID: 11400000, guid: 6ba02d398010cb84eb7ae2a3ebb80d5c, type: 2}
+  - {fileID: 11400000, guid: a3ba7bc8bf116864a9bed7b617fdfeda, type: 2}
+  - {fileID: 11400000, guid: 0cebef1c83f5dfa419439ee3e3a7e564, type: 2}
