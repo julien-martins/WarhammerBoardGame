@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,7 +14,11 @@ public class ButtonHandeler : MonoBehaviour
     public Unit currentEnemy;
     public Weapon currentWeapon;
     private Phase _phaseToCome;
-
+    
+    [SerializableField]
+    public Warcasters TopCaster;
+    public Warcasters Bottomcaster;
+    public FightManager fightManager;
 
 
     [FormerlySerializedAs("_currentWeaponToCome")] public int currentWeaponToCome;
@@ -23,6 +28,7 @@ public class ButtonHandeler : MonoBehaviour
      private TurnsHandeler _turnHandeler;
     private void Start()
     {
+        BegginNewTurn();
         BegginNewTurn();
     }
 
@@ -77,11 +83,15 @@ public class ButtonHandeler : MonoBehaviour
 
 
             case Phase.Control:
-                
+                break;
 
 
             case Phase.Activation:
-                Debug.Log("cum");
+                
+                //If distance is ok
+                (Unit, Unit) fighters =                 WhoIsAttackingWho();
+                currentWeapon= fighters.Item1.listOfWeapons[currentWeaponToCome];
+                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
                 break;
 
 
@@ -93,6 +103,69 @@ public class ButtonHandeler : MonoBehaviour
 
     }
 
+    private Unit getUnitSelectedOnBottom()
+    {
+        if (CheckifUnitIsSelectedUnit1())
+        {
+            return Bottomcaster;
+        }
+        else if (CheckifUnitIsSelectedUnit2()){
+            return Bottomcaster.warjackBattleGroup[0];
+        }
+        else if (CheckifUnitIsSelectedUnit3()){
+            return Bottomcaster.warjackBattleGroup[1];
+        }
+        else if (CheckifUnitIsSelectedUnit4()){
+            return Bottomcaster.warjackBattleGroup[2];
+        }
+        else
+        {
+            _turnHandeler.ErrorDuringGame("No jack selected on one side");
+            return null;
+        }
+        
+    }
+    private Unit getUnitSelectedOnTop()
+    {
+        if (CheckifUnitIsSelectedUnit5()){
+            return TopCaster;
+
+        }
+        else if (CheckifUnitIsSelectedUnit6()){
+            return TopCaster.warjackBattleGroup[0];
+        }
+        else if (CheckifUnitIsSelectedUnit7()){
+            return TopCaster.warjackBattleGroup[0];
+        }
+        else if (CheckifUnitIsSelectedUnit8()){
+            return TopCaster.warjackBattleGroup[0];
+        }
+        else
+        {
+            _turnHandeler.ErrorDuringGame("No jack selected on one side");
+            return null;
+        }
+
+    }
+
+    private (Unit, Unit) WhoIsAttackingWho()
+    {
+        (Unit, Unit) attackingAndDefencing;
+
+        attackingAndDefencing.Item1 = getUnitSelectedOnTop();
+        if (GameManager.Instance.GetActualWarcaster().faction != (attackingAndDefencing.Item1.faction))
+        {
+            attackingAndDefencing.Item2 = attackingAndDefencing.Item1;
+            attackingAndDefencing.Item1 = getUnitSelectedOnBottom();
+        }
+        else
+        {
+            attackingAndDefencing.Item2 = getUnitSelectedOnBottom();
+
+        }
+
+        return attackingAndDefencing;
+    }
 
 
     public int CountFocusUnit1() {
@@ -109,40 +182,30 @@ public class ButtonHandeler : MonoBehaviour
     }
     public int CountFocusUnit4()
     {
+        //test if the captor sees something
+
         return 1;
 
     }
 
-    public void BoostHit()
+    public bool BoostHit()
     {
-        isBoostingHit = true;
+        return true;
     }
-    public void BoostDMG()
+    public bool BoostDMG()
     {
-        isBoostingDmg= true;
+        //test if the captor sees something
+        return true;
 
     }
 
-    public void UseFocus()
+    public bool UseFocus()
     {
-        isUsingFocus = true;
+        return true;
     }
 
-    public void UnBoostHit()
-    {
-        isBoostingHit = false;
-    }
-    public void UnBoostDMG()
-    {
-        isBoostingDmg = false;
 
-    }
-
-    public void UnUseFocus()
-    {
-        isUsingFocus = false;
-    }
-
+ 
     public void AttackOne()
     {
         currentWeaponToCome = 0;
@@ -161,40 +224,37 @@ public class ButtonHandeler : MonoBehaviour
 
     }
 
-    public void Unit1()
+    public bool CheckifUnitIsSelectedUnit1()
     {
-        currentUnit = GameManager.Instance.GetActualWarcaster();
+        return false;
     }
-    public void Unit2()
+    public bool CheckifUnitIsSelectedUnit2()
     {
-        currentUnit = GameManager.Instance.GetActualWarcaster().warjackBattleGroup[0];
+        return false;
+    }
+    public bool CheckifUnitIsSelectedUnit3()
+    {
+        return false;
+    }
+    public bool CheckifUnitIsSelectedUnit4()
+    {
+        return true;
+    }
+    public bool CheckifUnitIsSelectedUnit5()
+    {
+        return false;
+    }
+    public bool CheckifUnitIsSelectedUnit6()
+    {
+        return true;
+    }
+    public bool CheckifUnitIsSelectedUnit7()
+    {
+        return false;
+    }
+    public bool CheckifUnitIsSelectedUnit8()
+    {
+        return false;
+    }
 
-    }
-    public void Unit3()
-    {
-        currentUnit = GameManager.Instance.GetActualWarcaster().warjackBattleGroup[1];
-    }
-    public void Unit4()
-    {
-        currentUnit = GameManager.Instance.GetActualWarcaster().warjackBattleGroup[2];
-    }
-    public void Enemy1()
-    {
-        currentEnemy = GameManager.Instance.GetActualEnemyCaster();
-
-    }
-    public void Enemy2()
-    {
-        currentEnemy = GameManager.Instance.GetActualEnemyCaster().warjackBattleGroup[0];
-
-    }
-    public void Enemy3()
-    {
-        currentEnemy = GameManager.Instance.GetActualEnemyCaster().warjackBattleGroup[1];
-    }
-    public void Enemy4()
-    {
-        currentEnemy = GameManager.Instance.GetActualEnemyCaster().warjackBattleGroup[2];
-
-    }
 }

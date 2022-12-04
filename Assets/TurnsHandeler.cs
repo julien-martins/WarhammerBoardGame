@@ -121,7 +121,7 @@ public class TurnsHandeler
         
     }
 
-    private void ErrorDuringGame(string message)
+    public void ErrorDuringGame(string message)
     {
         Debug.Log(message);
     }
