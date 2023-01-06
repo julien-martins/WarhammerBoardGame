@@ -21,6 +21,17 @@ public class ButtonHandeler : MonoBehaviour
     public FightManager fightManager;
 
 
+
+    //Test
+    public bool TestCurrentPhase;
+    public bool TestBoolHit;
+    public bool TestBoolDmg;
+    public bool TestBoolBoost;
+    public Unit currentUnitTestTop;
+    public Unit currentUnitTestBottom;
+
+
+
     [FormerlySerializedAs("_currentWeaponToCome")] public int currentWeaponToCome;
 
 
@@ -34,6 +45,12 @@ public class ButtonHandeler : MonoBehaviour
     private TurnsHandeler _turnHandeler;
     private void Start()
     {
+
+        //test
+        TestCurrentPhase = true;
+        TestBoolHit = false;
+        TestBoolDmg = false;
+        TestBoolBoost = false;
 
         _turnHandeler = new TurnsHandeler();
         _turnHandeler.firstRound();
@@ -72,44 +89,137 @@ public class ButtonHandeler : MonoBehaviour
 
 
 
-    /*
-     {
-            if (_currentUnitToCome.listOfWeapons.Count >= currentWeaponToCome +1)
-                currentWeaponToCome = _currentUnitToCome.listOfWeapons[currentWeaponToCome];
-        }
-     
-     */
+    //Test
+
+    public void testCurrentPhase()
+    {
+        Debug.Log("eze");
+        TestCurrentPhase = true;
+    }
+    public void  testNextPhase()
+    {
+        TestCurrentPhase = false;
+    }
+    public void TestBoolHitButton()
+    {
+        TestBoolHit = !TestBoolHit;
+    }
+    public void TestBoolDmgButton()
+    {
+        TestBoolDmg = !TestBoolDmg;
+    }
+    public void TestBoolBoostButton()
+    {
+        TestBoolBoost = !TestBoolBoost;
+    }
+    public void TestU1T()
+    {
+        currentUnitTestTop = TopCaster;
+
+    }
+    public void TestU2T()
+    {
+        currentUnitTestTop = TopCaster.warjackBattleGroup[0];
+
+    }
+    public void TestU3T()
+    {
+        currentUnitTestTop = TopCaster.warjackBattleGroup[1];
+
+    }
+    public void TestU4T()
+    {
+        currentUnitTestTop = TopCaster.warjackBattleGroup[2];
+
+    }
+    public void TestU1B()
+    {
+        currentUnitTestBottom = Bottomcaster;
+
+    }
+    public void TestU2B()
+    {
+        currentUnitTestBottom = Bottomcaster.warjackBattleGroup[0];
+
+    }
+    public void TestU3B()
+    {
+        currentUnitTestBottom = Bottomcaster.warjackBattleGroup[1];
+
+    }
+    public void TestU4B()
+    {
+        currentUnitTestBottom = Bottomcaster.warjackBattleGroup[2];
+
+    }
+
+    //Test Fin
+
 
     public void AcceptButton()
     {
-
-        
-
-        switch (_phaseToCome)
+        Debug.Log(TestCurrentPhase);
+        if (TestCurrentPhase)
         {
-            case Phase.Maintenance:
-                BegginNewTurn();
-                break;
+            Debug.Log(_turnHandeler.phase);
+            switch (_turnHandeler.phase)
+            {
+                case Phase.Maintenance:
+                    break;
 
 
-            case Phase.Control:
-                break;
+                case Phase.Control:
+                    break;
 
 
-            case Phase.Activation:
-                
-                //If distance is ok
-                (Unit, Unit) fighters = WhoIsAttackingWho();
-                currentWeapon= fighters.Item1.listOfWeapons[currentWeaponToCome];
-                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
-                break;
+                case Phase.Activation:
+                    Debug.Log("Fighting");
+                    //If distance is ok
+                    (Unit, Unit) fighters = WhoIsAttackingWho();
+                    currentWeapon = fighters.Item1.listOfWeapons[currentWeaponToCome];
+                    fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+                    break;
 
 
-            default: 
-                break;
+                default:
+                    break;
+
+            }
 
         }
+        else
+        {
+            switch (_turnHandeler.phase)
+            {
+                case Phase.Maintenance:
+                    break;
 
+
+                case Phase.Control:
+                    Debug.Log("Going to Activation");
+
+                    _turnHandeler.phase = Phase.Activation;
+                    break;
+
+
+                case Phase.Activation:
+                    Debug.Log("End the roubnd!");
+
+                    _turnHandeler.EndRound(GameManager.Instance.GetActualWarcaster());
+                    break;
+
+
+
+                default:
+                    break;
+
+            }
+        }
+
+
+
+
+        
 
     }
 
@@ -145,10 +255,10 @@ public class ButtonHandeler : MonoBehaviour
             return TopCaster.warjackBattleGroup[0];
         }
         else if (CheckifUnitIsSelectedUnit7()){
-            return TopCaster.warjackBattleGroup[0];
+            return TopCaster.warjackBattleGroup[1];
         }
         else if (CheckifUnitIsSelectedUnit8()){
-            return TopCaster.warjackBattleGroup[0];
+            return TopCaster.warjackBattleGroup[2];
         }
         else
         {
@@ -159,18 +269,26 @@ public class ButtonHandeler : MonoBehaviour
     }
 
     private (Unit, Unit) WhoIsAttackingWho()
+        //Les parenteses sont pour le test
     {
         (Unit, Unit) attackingAndDefencing;
+        attackingAndDefencing.Item1 = currentUnitTestTop;
 
-        attackingAndDefencing.Item1 = getUnitSelectedOnTop();
+     //   attackingAndDefencing.Item1 = getUnitSelectedOnTop();
         if (GameManager.Instance.GetActualWarcaster().faction != (attackingAndDefencing.Item1.faction))
         {
             attackingAndDefencing.Item2 = attackingAndDefencing.Item1;
-            attackingAndDefencing.Item1 = getUnitSelectedOnBottom();
+
+            //     attackingAndDefencing.Item1 = getUnitSelectedOnBottom();
+            attackingAndDefencing.Item1 = currentUnitTestBottom;
+
         }
         else
         {
-            attackingAndDefencing.Item2 = getUnitSelectedOnBottom();
+
+            //   attackingAndDefencing.Item2 = getUnitSelectedOnBottom();
+            attackingAndDefencing.Item2 = currentUnitTestBottom;
+
 
         }
 
