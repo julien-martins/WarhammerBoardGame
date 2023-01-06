@@ -15,11 +15,8 @@ public class TurnsHandeler
     
     public Phase phase;
 
-    private void FixedUpdate()
-    {
-        
-    }
-    
+
+
     public void firstRound()
     {
         GameManager.Instance.SetRandomCaster();
@@ -63,19 +60,11 @@ public class TurnsHandeler
 
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        firstRound();
-    }
+  
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void BegginingCommandPhase(Warcasters currentController)
-        //Check captures 
         
     {
         foreach(Warjack jack in currentController.warjackBattleGroup)
@@ -93,32 +82,10 @@ public class TurnsHandeler
         phase = Phase.Control;
     }
 
-    public void moveFocus(Warcasters currentController, Warjack currentWarjack)
+   public void EndRound(Warcasters currentController)
     {
-        // le joueur vient de déplacer le pion
-
-        if (currentWarjack.isDisrupted)
-            ErrorDuringGame("The Warjack is Distrupted");
-        else if(currentWarjack.actualFocus >= 3)
-            ErrorDuringGame("Warjacks has a maximum of 3 focus");
-        else if (currentController.actualFocus == 0)
-        {
-            ErrorDuringGame("Warcaster has'nt enough focus!");
-
-        }
-        else if (false)
-        {
-            ErrorDuringGame("Warcaster is too far away from the Warjack!");
-
-        }
-        else
-        {
-            currentController.actualFocus -= currentController.actualFocus;
-            currentWarjack.actualFocus += currentWarjack.actualFocus;
-        }
-
-        
-        
+        GameManager.Instance.PassTurn();
+        NewRoundStarts();
     }
 
     public void ErrorDuringGame(string message)

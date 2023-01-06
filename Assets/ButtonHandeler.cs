@@ -24,17 +24,25 @@ public class ButtonHandeler : MonoBehaviour
     [FormerlySerializedAs("_currentWeaponToCome")] public int currentWeaponToCome;
 
 
-   
-     private TurnsHandeler _turnHandeler;
+
+    private void Update()
+    {
+        //Open CV Code
+        //Check AcceptButton()
+    }
+
+    private TurnsHandeler _turnHandeler;
     private void Start()
     {
+
+        _turnHandeler = new TurnsHandeler();
+        _turnHandeler.firstRound();
         BegginNewTurn();
-        BegginNewTurn();
+
     }
 
     private void BegginNewTurn()
     {
-        _turnHandeler = new TurnsHandeler();
         currentWeaponToCome = -1;
         isBoostingDmg = false;
         isBoostingHit = false;
@@ -42,7 +50,6 @@ public class ButtonHandeler : MonoBehaviour
         currentUnit = null;
         currentEnemy = null;
         currentWeapon = null;
-        GameManager.Instance.PassTurn();
         _turnHandeler.NewRoundStarts();
 
     }
@@ -75,6 +82,9 @@ public class ButtonHandeler : MonoBehaviour
 
     public void AcceptButton()
     {
+
+        
+
         switch (_phaseToCome)
         {
             case Phase.Maintenance:
@@ -89,7 +99,7 @@ public class ButtonHandeler : MonoBehaviour
             case Phase.Activation:
                 
                 //If distance is ok
-                (Unit, Unit) fighters =                 WhoIsAttackingWho();
+                (Unit, Unit) fighters = WhoIsAttackingWho();
                 currentWeapon= fighters.Item1.listOfWeapons[currentWeaponToCome];
                 fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
                 break;
