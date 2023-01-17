@@ -183,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29080780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 451.29498, y: 362.50644, z: -0.758}
+  m_LocalPosition: {x: 451.265, y: 362.50644, z: -0.758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166362306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 451.98, y: 362.50644, z: -0.758}
+  m_LocalPosition: {x: 451.992, y: 362.50644, z: -0.758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -669,7 +669,7 @@ MonoBehaviour:
   dictionaryName: 0
   markerSideLength: 200
   markerBorderBits: 1
-  markerId: 0
+  markerId: 1
 --- !u!4 &880578685
 Transform:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880578683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 451.29, y: 362.50644, z: -0.514921}
+  m_LocalPosition: {x: 451.253, y: 362.50644, z: -0.514921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -702,7 +702,7 @@ MonoBehaviour:
   autoSaveInPlayMode: 1
   outputFolder: ArucoUnity/Images/
   automaticFilename: 1
-  imageFilename: ArUcoUnity_Marker_Dict4x4_50_Id_0
+  imageFilename: ArUcoUnity_Marker_Dict4x4_50_Id_1
 --- !u!1 &939245879
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939245879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 451.749, y: 362.50644, z: -0.758}
+  m_LocalPosition: {x: 451.769, y: 362.50644, z: -0.758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,7 +830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387570641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 451.522, y: 362.50644, z: -0.758}
+  m_LocalPosition: {x: 451.542, y: 362.50644, z: -0.758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1069,12 +1069,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dictionaryName: 0
-  markerSideLength: 120
+  markerSideLength: 200
   markerBorderBits: 1
   marginsLength: 0
   squaresNumberX: 10
   squaresNumberY: 6
-  squareSideLength: 200
+  squareSideLength: 250
 --- !u!114 &1864111431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   autoSaveInPlayMode: 1
   outputFolder: ArucoUnity/Images/
   automaticFilename: 1
-  imageFilename: ArUcoUnity_ChArUcoBoard_Dict4x4_50_X_10_Y_6_SquareSize_200_MarkerSize_120
+  imageFilename: ArUcoUnity_ChArUcoBoard_Dict4x4_50_X_10_Y_6_SquareSize_250_MarkerSize_200
 --- !u!4 &1864111432
 Transform:
   m_ObjectHideFlags: 0
@@ -1101,7 +1101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864111429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 450.009, y: 362.2177, z: -0.64641714}
+  m_LocalPosition: {x: 449.623, y: 362.496, z: -0.788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1168,7 +1168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881435908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 451.286, y: 362.50644, z: -0.986}
+  m_LocalPosition: {x: 451.267, y: 362.507, z: -0.992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
