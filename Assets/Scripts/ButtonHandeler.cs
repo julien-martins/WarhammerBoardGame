@@ -71,10 +71,10 @@ public class ButtonHandeler : MonoBehaviour
 
     }
 
-    public void ControlPhase()
+   /* public void ControlPhase()
     {
         _phaseToCome = Phase.Control;
-    }
+    }*/
     public void MaintenancePhase()
     {
         //New Turn
@@ -93,12 +93,15 @@ public class ButtonHandeler : MonoBehaviour
 
     public void testCurrentPhase()
     {
-        Debug.Log("eze");
         TestCurrentPhase = true;
+        Debug.Log("You asked for staying in the phase ");
+
     }
     public void  testNextPhase()
     {
         TestCurrentPhase = false;
+        Debug.Log("You asked for changing in the phase ");
+
     }
     public void TestBoolHitButton()
     {
@@ -158,17 +161,17 @@ public class ButtonHandeler : MonoBehaviour
 
     public void AcceptButton()
     {
-        Debug.Log(TestCurrentPhase);
+
+
+
         if (TestCurrentPhase)
         {
-            Debug.Log(_turnHandeler.phase);
+
             switch (_turnHandeler.phase)
             {
-                case Phase.Maintenance:
-                    break;
-
 
                 case Phase.Control:
+                    Debug.Log("You Can add Focus");
                     break;
 
 
@@ -176,8 +179,17 @@ public class ButtonHandeler : MonoBehaviour
                     Debug.Log("Fighting");
                     //If distance is ok
                     (Unit, Unit) fighters = WhoIsAttackingWho();
+                    if(currentWeaponToCome == -1 || currentWeaponToCome > fighters.Item1.listOfWeapons.Count)
+                    {
+                        _turnHandeler.ErrorDuringGame("No weapon selcted");
+                    }
+                    else
+                    {
+
+                
                     currentWeapon = fighters.Item1.listOfWeapons[currentWeaponToCome];
                     fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+                    }
                     break;
 
 
@@ -191,9 +203,6 @@ public class ButtonHandeler : MonoBehaviour
         {
             switch (_turnHandeler.phase)
             {
-                case Phase.Maintenance:
-                    break;
-
 
                 case Phase.Control:
                     Debug.Log("Going to Activation");

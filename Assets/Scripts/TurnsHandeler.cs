@@ -20,6 +20,7 @@ public class TurnsHandeler
     public void firstRound()
     {
         GameManager.Instance.SetRandomCaster();
+        Debug.Log("Caster : " + GameManager.Instance.GetActualWarcaster().name);
     }
 
     public void NewRoundStarts()
@@ -56,7 +57,7 @@ public class TurnsHandeler
                 GameManager.Instance.GetActualWarcaster().isOnFire = false;
             }
         }
-        BegginingCommandPhase(GameManager.Instance.GetActualWarcaster());
+        BegginingControlPhase(GameManager.Instance.GetActualWarcaster());
 
     }
     // Start is called before the first frame update
@@ -64,7 +65,7 @@ public class TurnsHandeler
 
    
 
-    public void BegginingCommandPhase(Warcasters currentController)
+    public void BegginingControlPhase(Warcasters currentController)
         
     {
         foreach(Warjack jack in currentController.warjackBattleGroup)

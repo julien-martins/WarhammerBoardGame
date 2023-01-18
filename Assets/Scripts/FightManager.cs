@@ -59,6 +59,7 @@ public class FightManager : MonoBehaviour
                 attacked.TakesDamage(
                     weapon.pow + attacking.str + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
                         IsDamageBoosted(attacking)).Item1 - attacked.arm, Random.Range(1, 6));
+           
         }
 
 
