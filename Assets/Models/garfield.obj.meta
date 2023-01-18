@@ -3,7 +3,22 @@ guid: aefa65abaf82ac444a12c82a3d21a4d6
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrawCall_34Mat
+    second: {fileID: 2100000, guid: 3057d124e90b6da43aaad5401a2ab298, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrawCall_45Mat
+    second: {fileID: 2100000, guid: 98e30d9b252ca6548ac380e6e722cedd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrawCall_46Mat
+    second: {fileID: 2100000, guid: fa7fb7890da32e0418efc17e24485569, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
