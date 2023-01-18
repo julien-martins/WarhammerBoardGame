@@ -76,6 +76,7 @@ public class TurnsHandeler
             }
 
             jack.isDisrupted = false;
+            jack.isPlayable = true;
             
         }
         currentController.isDisrupted = false;

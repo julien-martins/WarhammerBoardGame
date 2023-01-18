@@ -29,6 +29,7 @@ public class ButtonHandeler : MonoBehaviour
     public bool TestBoolBoost;
     public Unit currentUnitTestTop;
     public Unit currentUnitTestBottom;
+    public Unit previouselyPlayedUnit;
 
 
 
@@ -45,8 +46,7 @@ public class ButtonHandeler : MonoBehaviour
     private TurnsHandeler _turnHandeler;
     private void Start()
     {
-
-        //test
+        TestCurrentPhase = true;
         TestCurrentPhase = true;
         TestBoolHit = false;
         TestBoolDmg = false;
@@ -68,6 +68,7 @@ public class ButtonHandeler : MonoBehaviour
         currentEnemy = null;
         currentWeapon = null;
         _turnHandeler.NewRoundStarts();
+        previouselyPlayedUnit = null;
 
     }
 
@@ -85,10 +86,7 @@ public class ButtonHandeler : MonoBehaviour
     {
         _phaseToCome = Phase.Control;
 
-    }
-
-
-
+    } 
     //Test
 
     public void testCurrentPhase()
@@ -177,18 +175,49 @@ public class ButtonHandeler : MonoBehaviour
 
                 case Phase.Activation:
                     Debug.Log("Fighting");
+                    
                     //If distance is ok
                     (Unit, Unit) fighters = WhoIsAttackingWho();
-                    if(currentWeaponToCome == -1 || currentWeaponToCome > fighters.Item1.listOfWeapons.Count)
+                    if (fighters.Item1.isPlayable)
                     {
-                        _turnHandeler.ErrorDuringGame("No weapon selcted");
-                    }
-                    else
-                    {
+                        if (previouselyPlayedUnit != null)
+                            if (previouselyPlayedUnit != fighters.Item1)
+                            {
+                                previouselyPlayedUnit.UsedWeaponList.Clear();
+                                previouselyPlayedUnit.isPlayable = false;
+                            }
 
-                
-                    currentWeapon = fighters.Item1.listOfWeapons[currentWeaponToCome];
-                    fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+                            
+
+                        if (currentWeaponToCome == -1 || currentWeaponToCome > fighters.Item1.listOfWeapons.Count)
+                        {
+                            _turnHandeler.ErrorDuringGame("No weapon selcted");
+                        }
+                        else
+                        {
+
+                            currentWeapon = fighters.Item1.listOfWeapons[currentWeaponToCome];
+
+                            if (!fighters.Item1.isWeaponUsed(currentWeapon))
+                            {
+                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+                                fighters.Item1.UsedWeaponList.Add(currentWeapon);
+
+
+                            }
+
+                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && TestBoolBoost && fighters.Item1.actualFocus > 0)
+                            {
+                                fighters.Item1.actualFocus = fighters.Item1.actualFocus - 1;
+                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+
+                            }
+                            else
+                            {
+                                _turnHandeler.ErrorDuringGame("Can't attack");
+
+                            }
+                        }
                     }
                     break;
 
