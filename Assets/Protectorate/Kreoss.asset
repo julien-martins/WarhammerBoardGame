@@ -20,6 +20,7 @@ MonoBehaviour:
   arm: 16
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 1
   isDisrupted: 0
   listOfWeapons:
   - name: Spellbreaker
@@ -29,7 +30,10 @@ MonoBehaviour:
     correspondingWorkingPart: 6
   faction: 0
   workingParts: 01010101010101
-  actualFocus: 0
+  actualFocus: 7
+  arucoGameObject: {fileID: 0}
+  distanceGameObject: {fileID: 0}
+  UsedWeaponList: []
   Focus: 7
   lifePoints: 18
   warjackBattleGroup:

@@ -20,6 +20,7 @@ MonoBehaviour:
   arm: 17
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 1
   isDisrupted: 0
   listOfWeapons:
   - name: Death Harpoon
@@ -40,6 +41,9 @@ MonoBehaviour:
   faction: 2
   workingParts: 00010001010101
   actualFocus: 0
+  arucoGameObject: {fileID: 0}
+  distanceGameObject: {fileID: 0}
+  UsedWeaponList: []
   dmgGrid:
     v: 
   isArcNode: 0

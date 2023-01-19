@@ -20,6 +20,7 @@ MonoBehaviour:
   arm: 15
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 1
   isDisrupted: 0
   listOfWeapons:
   - name: Death Kiss
@@ -30,6 +31,9 @@ MonoBehaviour:
   faction: 2
   workingParts: 01010101010101
   actualFocus: 0
+  arucoGameObject: {fileID: 0}
+  distanceGameObject: {fileID: 0}
+  UsedWeaponList: []
   Focus: 7
   lifePoints: 16
   warjackBattleGroup:

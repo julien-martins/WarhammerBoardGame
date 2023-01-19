@@ -20,6 +20,7 @@ MonoBehaviour:
   arm: 16
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 1
   isDisrupted: 0
   listOfWeapons:
   - name: Storm Strike
@@ -35,6 +36,9 @@ MonoBehaviour:
   faction: 1
   workingParts: 01010101010101
   actualFocus: 0
+  arucoGameObject: {fileID: 0}
+  distanceGameObject: {fileID: 0}
+  UsedWeaponList: []
   Focus: 6
   lifePoints: 16
   warjackBattleGroup:

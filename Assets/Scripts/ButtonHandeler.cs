@@ -35,6 +35,7 @@ public class ButtonHandeler : MonoBehaviour
     public Unit currentUnitTestBottom;
     public Unit previouselyPlayedUnit;
 
+    bool _movedInTurn;
 
 
     public bool validationDetected;
@@ -64,7 +65,6 @@ public class ButtonHandeler : MonoBehaviour
     IEnumerator ValidateCountDown()
     {
         //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(5);
@@ -92,6 +92,7 @@ public class ButtonHandeler : MonoBehaviour
 
     private void BegginNewTurn()
     {
+        _movedInTurn = false;
         currentWeaponToCome = -1;
         isBoostingDmg = false;
         isBoostingHit = false;
@@ -125,46 +126,88 @@ public class ButtonHandeler : MonoBehaviour
 
     public void AcceptButton()
     {
+        Debug.Log("Processing");
 
 
 
-        if (ButtonsList[22].GameObject().activeSelf)
+        if (ButtonsList[14].GameObject().activeSelf)
         {
+            Debug.Log("Staying in the same Phase");
+
 
             switch (_turnHandeler.phase)
             {
 
+
                 case Phase.Control:
-                    Debug.Log("You Can add Focus");
+                    Debug.Log("Auto controlling Focus");
+
+                    foreach(Warjack jack in GameManager.Instance.GetActualWarcaster().warjackBattleGroup)
+                {
+                    if (!jack.isDisrupted && GameManager.Instance.GetActualWarcaster().actualFocus >0 && jack.actualFocus < 3)
+                    {
+                        jack.actualFocus += 1;
+                        GameManager.Instance.GetActualWarcaster().actualFocus -= 1;
+                        Debug.Log(GameManager.Instance.GetActualWarcaster().name + " 's focus :" + GameManager.Instance.GetActualWarcaster().actualFocus);
+                        Debug.Log(jack.name + " 's focus :" + jack.actualFocus);
+
+                    }
+                    
+                        
+                }
+                    
+                    
                     break;
 
 
                 case Phase.Activation:
-                    Debug.Log("Fighting");
+                    
+                    
+                    
+                    Debug.Log("Activating");
                     
                     //If distance is ok
                     (Unit, Unit) fighters = WhoIsAttackingWho();
+                    Debug.Log("Unit 1 = " + fighters.Item1);
+                    Debug.Log("Unit 2 = " + fighters.Item2);
+
                     if (fighters.Item1.isPlayable)
                     {
+                        Debug.Log(("Fighter 1 can do things"));
                         if (previouselyPlayedUnit != null)
                             if (previouselyPlayedUnit != fighters.Item1)
                             {
                                 previouselyPlayedUnit.UsedWeaponList.Clear();
                                 previouselyPlayedUnit.isPlayable = false;
+                                _movedInTurn = false;
                             }
+                        
+                        
 
-                        if (ButtonsList[16].GameObject().activeSelf)
+                        if (ButtonsList[8].GameObject().activeSelf)
                         {
+                            Debug.Log(("Atack 1 selected"));
+
                             AttackOne();
-                        } else if (ButtonsList[17].GameObject().activeSelf)
+                        } else if (ButtonsList[9].GameObject().activeSelf)
                         {
+                            Debug.Log(("Atack 2 selected"));
+
                             AttackTwo();
 
-                        } else if (ButtonsList[18].GameObject().activeSelf)
+                        } else if (ButtonsList[10].GameObject().activeSelf)
                         {
+                            Debug.Log(("Atack 3 selected"));
+
                             AttackThree();
 
-                        } 
+                        }
+                        else if (_movedInTurn)
+                        {
+                            Debug.Log("Moving");
+                            fighters.Item1.DrawDistanceCircle();
+                            _movedInTurn = true;
+                        }
 
                             
 
@@ -179,16 +222,16 @@ public class ButtonHandeler : MonoBehaviour
 
                             if (!fighters.Item1.isWeaponUsed(currentWeapon))
                             {
-                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[20].GameObject().activeSelf, ButtonsList[21].GameObject().activeSelf);
+                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[12].GameObject().activeSelf, ButtonsList[13].GameObject().activeSelf);
                                 fighters.Item1.UsedWeaponList.Add(currentWeapon);
 
 
                             }
 
-                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && ButtonsList[21].GameObject().activeSelf && fighters.Item1.actualFocus > 0)
+                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && ButtonsList[13].GameObject().activeSelf && fighters.Item1.actualFocus > 0)
                             {
                                 fighters.Item1.actualFocus = fighters.Item1.actualFocus - 1;
-                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[20].GameObject().activeSelf, ButtonsList[21].GameObject().activeSelf);
+                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[12].GameObject().activeSelf, ButtonsList[13].GameObject().activeSelf);
 
                             }
                             else
@@ -207,8 +250,10 @@ public class ButtonHandeler : MonoBehaviour
             }
 
         }
-        else if(ButtonsList[23].GameObject().activeSelf)
+        else if(ButtonsList[15].GameObject().activeSelf)
         {
+            Debug.Log("Changing Phase");
+
             switch (_turnHandeler.phase)
             {
 
@@ -231,6 +276,11 @@ public class ButtonHandeler : MonoBehaviour
                     break;
 
             }
+        }
+        else
+        {
+            Debug.Log("No phase");
+
         }
 
 
@@ -286,7 +336,6 @@ public class ButtonHandeler : MonoBehaviour
     }
 
     private (Unit, Unit) WhoIsAttackingWho()
-        //Les parenteses sont pour le test
     {
         if (ButtonsList[0].GameObject().activeSelf)
             currentUnitTestTop = TopCaster;
@@ -297,17 +346,22 @@ public class ButtonHandeler : MonoBehaviour
         else if (ButtonsList[3].GameObject().activeSelf)
             currentUnitTestTop = TopCaster.warjackBattleGroup[2];
         if (ButtonsList[4].GameObject().activeSelf)
-            currentUnitTestTop = Bottomcaster;
+            currentUnitTestBottom = Bottomcaster;
         else if (ButtonsList[5].GameObject().activeSelf)
-            currentUnitTestTop = Bottomcaster.warjackBattleGroup[0];
+            currentUnitTestBottom = Bottomcaster.warjackBattleGroup[0];
         else if (ButtonsList[6].GameObject().activeSelf)
-            currentUnitTestTop = Bottomcaster.warjackBattleGroup[1];
+            currentUnitTestBottom = Bottomcaster.warjackBattleGroup[1];
         else if (ButtonsList[7].GameObject().activeSelf)
-            currentUnitTestTop = Bottomcaster.warjackBattleGroup[2];
+            currentUnitTestBottom = Bottomcaster.warjackBattleGroup[2];
+        else
+        {
+            Debug.Log("Malaise");
+        }
         
         
-        
-        
+        Debug.Log(currentUnitTestTop);
+        Debug.Log(currentUnitTestBottom);
+
         
         (Unit, Unit) attackingAndDefencing;
         attackingAndDefencing.Item1 = currentUnitTestTop;

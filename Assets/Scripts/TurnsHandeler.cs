@@ -20,7 +20,7 @@ public class TurnsHandeler
     public void firstRound()
     {
         GameManager.Instance.SetRandomCaster();
-        Debug.Log("Caster : " + GameManager.Instance.GetActualWarcaster().name);
+        Debug.Log("Caster : " + GameManager.Instance.GetActualWarcaster());
     }
 
     public void NewRoundStarts()

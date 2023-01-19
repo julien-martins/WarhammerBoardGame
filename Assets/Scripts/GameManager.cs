@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     private List<Warcasters> _listWarcaster;
     private Warcasters _actualWarcaster;
-
+    public Testing test;
 
  
     public static GameManager Instance
@@ -63,6 +63,9 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
         _listWarcaster = new List<Warcasters>();
+        test.StartTesting();
+        SetRandomCaster();
+
 
     }
 

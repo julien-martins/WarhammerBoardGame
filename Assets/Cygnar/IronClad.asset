@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
-  m_Name: IronClad
+  m_Name: Ironclad
   m_EditorClassIdentifier: 
   spd: 5
   str: 11
@@ -20,6 +20,7 @@ MonoBehaviour:
   arm: 18
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 1
   isDisrupted: 0
   listOfWeapons:
   - name: Quake Hammer
@@ -35,6 +36,9 @@ MonoBehaviour:
   faction: 1
   workingParts: 00010001010101
   actualFocus: 0
+  arucoGameObject: {fileID: 0}
+  distanceGameObject: {fileID: 0}
+  UsedWeaponList: []
   dmgGrid:
     v: 
   isArcNode: 0

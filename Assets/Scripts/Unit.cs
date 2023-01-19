@@ -20,6 +20,9 @@ public class Unit : ScriptableObject
     public Faction faction;
     public List<bool> workingParts;
     public int actualFocus;
+    public GameObject arucoGameObject;
+    public Circle distanceComponent;
+
 
     public List<Weapon>  UsedWeaponList ;
 
@@ -58,5 +61,17 @@ public class Unit : ScriptableObject
             
             return true;
         }
+    }
+
+
+    public void DrawDistanceCircle()
+    {
+        distanceComponent.Draw(spd);
+        
+    }
+
+    public void DestroyDistanceCircle()
+    {
+        distanceComponent.DestroyCircle();
     }
 }

@@ -20,6 +20,7 @@ MonoBehaviour:
   arm: 14
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 1
   isDisrupted: 0
   listOfWeapons:
   - name: Mandibule
@@ -30,6 +31,9 @@ MonoBehaviour:
   faction: 2
   workingParts: 01010100010001
   actualFocus: 0
+  arucoGameObject: {fileID: 0}
+  distanceGameObject: {fileID: 0}
+  UsedWeaponList: []
   dmgGrid:
     v: 
   isArcNode: 1
