@@ -20,22 +20,19 @@ public class BorderManagerScript : MonoBehaviour
     void Update()
     {
         lineRenderer.startWidth = width;
+        bool allMakersVisible = true;
         for (int i = 0; i < corners.Count; i++)
         {
+            if (!corners[i].activeInHierarchy)
+                allMakersVisible = false;
             lineRenderer.SetPosition(i, corners[i].transform.position);
         }
+
+        if (!allMakersVisible)
+            lineRenderer.enabled = false;
+        else
+            lineRenderer.enabled = true;
     }
 
-    private void OnDrawGizmos()
-    {
-        if(corners != null)
-        {
-            for (int i = 0; i < corners.Count - 1; i++)
-            {
-                Gizmos.DrawLine(corners[i].transform.position, corners[i + 1].transform.position);
-            }
-            Gizmos.DrawLine(corners[corners.Count-1].transform.position, corners[0].transform.position);
-        }
-        
-    }
+
 }
