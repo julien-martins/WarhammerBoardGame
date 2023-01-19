@@ -8,7 +8,7 @@ public class Testing : MonoBehaviour
     [SerializableField] public Warcasters caster1;
     [SerializableField] public Warcasters caster2;
 
-    void Awake()
+    void Start()
     {
         GameManager.Instance.SetCharacters(caster1, caster2);
         GameManager.Instance.SetRandomCaster();

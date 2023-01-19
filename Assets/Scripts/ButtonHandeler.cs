@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ArucoUnity.Objects;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,11 +16,14 @@ public class ButtonHandeler : MonoBehaviour
     public Weapon currentWeapon;
     private Phase _phaseToCome;
     
+    
     [SerializableField]
     public Warcasters TopCaster;
     public Warcasters Bottomcaster;
     public FightManager fightManager;
 
+    [SerializableField]
+    public List<ArucoObject> ButtonsList;
 
 
     //Test
@@ -33,19 +37,47 @@ public class ButtonHandeler : MonoBehaviour
 
 
 
+    public bool validationDetected;
+    public bool validationCoolDown;
+
+
     [FormerlySerializedAs("_currentWeaponToCome")] public int currentWeaponToCome;
 
 
+    
 
     private void Update()
     {
-        //Open CV Code
+        if (!validationCoolDown)
+        {
+            if (ButtonsList[ButtonsList.Count -1].GameObject().activeSelf)
+            {
+                validationCoolDown = true;
+                StartCoroutine(ValidateCountDown());
+                AcceptButton();
+
+                
+           }
+        }
         //Check AcceptButton()
+    }
+    IEnumerator ValidateCountDown()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+
+        //After we have waited 5 seconds print the time again.
+        validationCoolDown = false;
     }
 
     private TurnsHandeler _turnHandeler;
     private void Start()
     {
+        validationDetected = false;
+        validationCoolDown = false;
         TestCurrentPhase = true;
         TestCurrentPhase = true;
         TestBoolHit = false;
@@ -89,72 +121,6 @@ public class ButtonHandeler : MonoBehaviour
     } 
     //Test
 
-    public void testCurrentPhase()
-    {
-        TestCurrentPhase = true;
-        Debug.Log("You asked for staying in the phase ");
-
-    }
-    public void  testNextPhase()
-    {
-        TestCurrentPhase = false;
-        Debug.Log("You asked for changing in the phase ");
-
-    }
-    public void TestBoolHitButton()
-    {
-        TestBoolHit = !TestBoolHit;
-    }
-    public void TestBoolDmgButton()
-    {
-        TestBoolDmg = !TestBoolDmg;
-    }
-    public void TestBoolBoostButton()
-    {
-        TestBoolBoost = !TestBoolBoost;
-    }
-    public void TestU1T()
-    {
-        currentUnitTestTop = TopCaster;
-
-    }
-    public void TestU2T()
-    {
-        currentUnitTestTop = TopCaster.warjackBattleGroup[0];
-
-    }
-    public void TestU3T()
-    {
-        currentUnitTestTop = TopCaster.warjackBattleGroup[1];
-
-    }
-    public void TestU4T()
-    {
-        currentUnitTestTop = TopCaster.warjackBattleGroup[2];
-
-    }
-    public void TestU1B()
-    {
-        currentUnitTestBottom = Bottomcaster;
-
-    }
-    public void TestU2B()
-    {
-        currentUnitTestBottom = Bottomcaster.warjackBattleGroup[0];
-
-    }
-    public void TestU3B()
-    {
-        currentUnitTestBottom = Bottomcaster.warjackBattleGroup[1];
-
-    }
-    public void TestU4B()
-    {
-        currentUnitTestBottom = Bottomcaster.warjackBattleGroup[2];
-
-    }
-
-    //Test Fin
 
 
     public void AcceptButton()
@@ -162,7 +128,7 @@ public class ButtonHandeler : MonoBehaviour
 
 
 
-        if (TestCurrentPhase)
+        if (ButtonsList[22].GameObject().activeSelf)
         {
 
             switch (_turnHandeler.phase)
@@ -187,6 +153,19 @@ public class ButtonHandeler : MonoBehaviour
                                 previouselyPlayedUnit.isPlayable = false;
                             }
 
+                        if (ButtonsList[16].GameObject().activeSelf)
+                        {
+                            AttackOne();
+                        } else if (ButtonsList[17].GameObject().activeSelf)
+                        {
+                            AttackTwo();
+
+                        } else if (ButtonsList[18].GameObject().activeSelf)
+                        {
+                            AttackThree();
+
+                        } 
+
                             
 
                         if (currentWeaponToCome == -1 || currentWeaponToCome > fighters.Item1.listOfWeapons.Count)
@@ -200,16 +179,16 @@ public class ButtonHandeler : MonoBehaviour
 
                             if (!fighters.Item1.isWeaponUsed(currentWeapon))
                             {
-                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[20].GameObject().activeSelf, ButtonsList[21].GameObject().activeSelf);
                                 fighters.Item1.UsedWeaponList.Add(currentWeapon);
 
 
                             }
 
-                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && TestBoolBoost && fighters.Item1.actualFocus > 0)
+                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && ButtonsList[21].GameObject().activeSelf && fighters.Item1.actualFocus > 0)
                             {
                                 fighters.Item1.actualFocus = fighters.Item1.actualFocus - 1;
-                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon);
+                                fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[20].GameObject().activeSelf, ButtonsList[21].GameObject().activeSelf);
 
                             }
                             else
@@ -228,7 +207,7 @@ public class ButtonHandeler : MonoBehaviour
             }
 
         }
-        else
+        else if(ButtonsList[23].GameObject().activeSelf)
         {
             switch (_turnHandeler.phase)
             {
@@ -309,6 +288,27 @@ public class ButtonHandeler : MonoBehaviour
     private (Unit, Unit) WhoIsAttackingWho()
         //Les parenteses sont pour le test
     {
+        if (ButtonsList[0].GameObject().activeSelf)
+            currentUnitTestTop = TopCaster;
+        else if (ButtonsList[1].GameObject().activeSelf)
+            currentUnitTestTop = TopCaster.warjackBattleGroup[0];
+        else if (ButtonsList[2].GameObject().activeSelf)
+            currentUnitTestTop = TopCaster.warjackBattleGroup[1];
+        else if (ButtonsList[3].GameObject().activeSelf)
+            currentUnitTestTop = TopCaster.warjackBattleGroup[2];
+        if (ButtonsList[4].GameObject().activeSelf)
+            currentUnitTestTop = Bottomcaster;
+        else if (ButtonsList[5].GameObject().activeSelf)
+            currentUnitTestTop = Bottomcaster.warjackBattleGroup[0];
+        else if (ButtonsList[6].GameObject().activeSelf)
+            currentUnitTestTop = Bottomcaster.warjackBattleGroup[1];
+        else if (ButtonsList[7].GameObject().activeSelf)
+            currentUnitTestTop = Bottomcaster.warjackBattleGroup[2];
+        
+        
+        
+        
+        
         (Unit, Unit) attackingAndDefencing;
         attackingAndDefencing.Item1 = currentUnitTestTop;
 

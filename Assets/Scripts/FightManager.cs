@@ -24,12 +24,12 @@ public class FightManager : MonoBehaviour
     
 
 
-    public void Attacking(Unit attacking, Unit attacked, Weapon weapon)
+    public void Attacking(Unit attacking, Unit attacked, Weapon weapon, bool hitBoosted, bool dmgBoosted)
     {
         if (weapon.isRanged)
         {
             (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-            IsHitBoosted(attacking));
+            IsHitBoosted(attacking, hitBoosted));
 
 
             if (attacked.def <= attacking.rat +
@@ -42,13 +42,13 @@ public class FightManager : MonoBehaviour
                 
                 attacked.TakesDamage(
                     weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking)).Item1 -
+                        IsDamageBoosted(attacking, dmgBoosted)).Item1 -
                     attacked.arm, Random.Range(1, 6));
         }
         else
         {
             (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                    IsHitBoosted(attacking));
+                    IsHitBoosted(attacking, hitBoosted));
             if (attacked.def <= attacking.mat + tupleResultRoll.Item1)
                 //Special effects
                 if (tupleResultRoll.Item2)
@@ -58,7 +58,7 @@ public class FightManager : MonoBehaviour
                 
                 attacked.TakesDamage(
                     weapon.pow + attacking.str + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking)).Item1 - attacked.arm, Random.Range(1, 6));
+                        IsDamageBoosted(attacking, dmgBoosted)).Item1 - attacked.arm, Random.Range(1, 6));
            
         }
 
@@ -69,9 +69,9 @@ public class FightManager : MonoBehaviour
 
     }
 
-    private bool IsDamageBoosted(Unit attacking)
+    private bool IsDamageBoosted(Unit attacking, bool dmgBoosted)
     {
-        if (attacking.actualFocus > 0)
+        if (attacking.actualFocus > 0 && dmgBoosted)
         {
             attacking.actualFocus -= 1;
             return true;
@@ -116,9 +116,9 @@ public class FightManager : MonoBehaviour
     }
 
 
-    private bool IsHitBoosted(Unit attacking)
+    private bool IsHitBoosted(Unit attacking, bool rollBoosted)
     {
-        if (attacking.actualFocus > 0)
+        if (attacking.actualFocus > 0 && rollBoosted)
         {
             attacking.actualFocus -= 1;
             return true;

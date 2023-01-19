@@ -39,7 +39,11 @@ namespace ArucoUnity.Objects.Trackers
     private double polygonalApproxAccuracyRate = 0.03;
 
     [SerializeField]
-    [Tooltip("The minimum distance between corners for detected markers relative to its perimeter (default 0.05).")]
+    [Tooltip("The minimum dis4" +
+             "" +
+             "" +
+             "" +
+             "tance between corners for detected markers relative to its perimeter (default 0.05).")]
     private double minCornerDistanceRate = 0.05;
 
     [SerializeField]

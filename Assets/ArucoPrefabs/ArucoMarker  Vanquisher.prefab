@@ -148,7 +148,7 @@ MonoBehaviour:
   dictionaryName: 0
   markerSideLength: 200
   markerBorderBits: 1
-  markerId: 7
+  markerId: 2
 --- !u!114 &1471693440798331417
 MonoBehaviour:
   m_ObjectHideFlags: 0
