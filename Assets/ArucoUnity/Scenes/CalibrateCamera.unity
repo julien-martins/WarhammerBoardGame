@@ -600,6 +600,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114439970468321140, guid: 4c41cbbf88539e94fb09ee8c56317115, type: 3}
+      propertyPath: webcamId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114750514242914752, guid: 4c41cbbf88539e94fb09ee8c56317115, type: 3}
       propertyPath: autoStart
       value: 0
