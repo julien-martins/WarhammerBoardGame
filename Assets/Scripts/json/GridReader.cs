@@ -21,7 +21,7 @@ public class GridReader : MonoBehaviour
 {
     private GridUnits gridUnits;
     
-    void Start()
+    void Awake()
     {
         StreamReader reader = new StreamReader("Assets/Grids.json");
         var str = reader.ReadToEnd();
@@ -30,5 +30,33 @@ public class GridReader : MonoBehaviour
         gridUnits = JsonConvert.DeserializeObject<GridUnits>(str);
     }
 
-    public GridUnits GetGridUnits() => gridUnits;
+    public int[,] GetGridUnits(string name)
+    {
+        switch (name) {
+            case "Crusader":
+                return gridUnits.Crusader;
+            case "Vanquisher":
+                return gridUnits.Vanquisher;
+            case "Ironclad":
+                return gridUnits.IronClad;
+            case "FireFly":
+                return gridUnits.FireFly;
+            case "Lancer":
+                return gridUnits.Lancer;
+            case "Repenter":
+                return gridUnits.Repenter;
+            case "Slayer":
+                return gridUnits.Slayer;
+            case "Reaper":
+                return gridUnits.Reaper;
+            case "Deathripper":
+                return gridUnits.Deathripper;
+            default:
+                return null;
+        }
+
+
 }
+    }
+
+

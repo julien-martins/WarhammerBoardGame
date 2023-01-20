@@ -7,6 +7,8 @@ public class Testing : MonoBehaviour
     // Start is called before the first frame update
     public  Warcasters caster1;
     public  Warcasters caster2;
+    public GridReader _gridReader;
+    private Warjack actualJack;
 
     public void StartTesting()
     {
@@ -19,7 +21,6 @@ public class Testing : MonoBehaviour
     void InitializeGameObjectLink()
     {
         caster1.arucoGameObject = GameObject.FindWithTag(caster1.name);
-        Debug.Log(caster1.arucoGameObject);
         caster1.distanceComponent = caster1.arucoGameObject.GetComponentInChildren<Circle>();
         
         caster2.arucoGameObject = GameObject.FindWithTag(caster2.name);
@@ -27,17 +28,19 @@ public class Testing : MonoBehaviour
 
         for (int i = 0; i < caster1.warjackBattleGroup.Count; i++)
         {
-            caster1.warjackBattleGroup[i].arucoGameObject = GameObject.FindWithTag(caster1.warjackBattleGroup[i].name);
-            Debug.Log(caster1.warjackBattleGroup[i].arucoGameObject.name + " vs " + caster1.warjackBattleGroup[i].name);
-            caster1.warjackBattleGroup[i].distanceComponent = caster1.warjackBattleGroup[i].arucoGameObject.GetComponentInChildren<Circle>();
-            Debug.Log(caster1.warjackBattleGroup[i].distanceComponent.gameObject.transform.parent.name);
+            actualJack = caster1.warjackBattleGroup[i];
+            actualJack.arucoGameObject = GameObject.FindWithTag(actualJack.name);
+            actualJack.distanceComponent = actualJack.arucoGameObject.GetComponentInChildren<Circle>();
+            actualJack.grid = _gridReader.GetGridUnits(actualJack.name);
         }
         for (int i = 0; i < caster2.warjackBattleGroup.Count; i++)
         {
-            caster2.warjackBattleGroup[i].arucoGameObject = GameObject.FindWithTag(caster2.warjackBattleGroup[i].name);
-            Debug.Log(caster2.warjackBattleGroup[i].arucoGameObject.name + " vs " + caster2.warjackBattleGroup[i].name);
-            caster2.warjackBattleGroup[i].distanceComponent = caster2.warjackBattleGroup[i].arucoGameObject.GetComponentInChildren<Circle>();
-            Debug.Log(caster2.warjackBattleGroup[i].distanceComponent.gameObject.transform.parent.name);
+            actualJack = caster2.warjackBattleGroup[i];
+
+            actualJack.arucoGameObject = GameObject.FindWithTag(actualJack.name);
+            actualJack.distanceComponent = actualJack.arucoGameObject.GetComponentInChildren<Circle>();
+            actualJack.grid = _gridReader.GetGridUnits(actualJack.name);
+
 
         }
 

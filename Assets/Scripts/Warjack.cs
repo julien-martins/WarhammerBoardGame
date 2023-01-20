@@ -6,7 +6,8 @@ using UnityEngine;
 public class Warjack : Unit
 {
 
-    public DamageGrid dmgGrid;
+    public int[,] grid;
+
     public bool isArcNode;
 
 

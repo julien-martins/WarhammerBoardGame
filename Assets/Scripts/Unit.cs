@@ -26,7 +26,6 @@ public class Unit : ScriptableObject
 
     public List<Weapon>  UsedWeaponList ;
 
-
     public void addToUsedList(Weapon usedWeapon)
     {
         UsedWeaponList.Add(usedWeapon);

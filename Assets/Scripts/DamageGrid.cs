@@ -9,7 +9,6 @@ public class DamageGrid
     public string v;
     private string path;
     private string jsonString;
-    public char[][] grid;
 
     public DamageGrid(string v)
     {
