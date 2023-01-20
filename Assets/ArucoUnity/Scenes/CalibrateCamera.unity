@@ -236,6 +236,26 @@ PrefabInstance:
       propertyPath: calibrationBoard
       value: 
       objectReference: {fileID: 351674420}
+    - target: {fileID: 114479760342518650, guid: 33877b17cdcf7334bbd2152625efad87, type: 3}
+      propertyPath: minDistanceToBorder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479760342518650, guid: 33877b17cdcf7334bbd2152625efad87, type: 3}
+      propertyPath: cornerRefinementMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479760342518650, guid: 33877b17cdcf7334bbd2152625efad87, type: 3}
+      propertyPath: maxMarkerPerimeterRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479760342518650, guid: 33877b17cdcf7334bbd2152625efad87, type: 3}
+      propertyPath: adaptiveThreshWinSizeMax
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479760342518650, guid: 33877b17cdcf7334bbd2152625efad87, type: 3}
+      propertyPath: adaptiveThreshWinSizeMin
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33877b17cdcf7334bbd2152625efad87, type: 3}
 --- !u!1 &351674418
