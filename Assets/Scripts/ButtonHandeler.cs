@@ -181,8 +181,12 @@ public class ButtonHandeler : MonoBehaviour
                                 previouselyPlayedUnit.isPlayable = false;
                                 _movedInTurn = false;
                             }
-                        
-                        
+                            else
+                            {
+                                _movedInTurn = false;
+
+                            }
+
 
                         if (ButtonsList[8].GameObject().activeSelf)
                         {
@@ -202,9 +206,9 @@ public class ButtonHandeler : MonoBehaviour
                             AttackThree();
 
                         }
-                        else if (_movedInTurn)
+                        else if (!_movedInTurn)
                         {
-                            Debug.Log("Moving");
+                            Debug.Log("Moving " + fighters.Item1.name);
                             fighters.Item1.DrawDistanceCircle();
                             _movedInTurn = true;
                         }
@@ -220,7 +224,7 @@ public class ButtonHandeler : MonoBehaviour
 
                             currentWeapon = fighters.Item1.listOfWeapons[currentWeaponToCome];
 
-                            if (!fighters.Item1.isWeaponUsed(currentWeapon))
+                            if (!fighters.Item1.isWeaponUsed(currentWeapon) && fighters.Item1.isInRangeToAttack(fighters.Item2, currentWeapon.rng))
                             {
                                 fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[12].GameObject().activeSelf, ButtonsList[13].GameObject().activeSelf);
                                 fighters.Item1.UsedWeaponList.Add(currentWeapon);
@@ -228,7 +232,7 @@ public class ButtonHandeler : MonoBehaviour
 
                             }
 
-                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && ButtonsList[13].GameObject().activeSelf && fighters.Item1.actualFocus > 0)
+                            else if(fighters.Item1.isWeaponUsed(currentWeapon) && ButtonsList[13].GameObject().activeSelf && fighters.Item1.actualFocus > 0 && fighters.Item1.isInRangeToAttack(fighters.Item2, currentWeapon.rng))
                             {
                                 fighters.Item1.actualFocus = fighters.Item1.actualFocus - 1;
                                 fightManager.Attacking(fighters.Item1, fighters.Item2, currentWeapon, ButtonsList[12].GameObject().activeSelf, ButtonsList[13].GameObject().activeSelf);

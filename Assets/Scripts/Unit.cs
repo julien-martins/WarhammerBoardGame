@@ -53,12 +53,14 @@ public class Unit : ScriptableObject
     {
         if (dmg <= 0)
         {
+            Debug.Log("No damages");
             return false;
         }
         else
         {
-            
-            
+
+            Debug.Log(dmg + " in collumn " + collumn);
+
             return true;
         }
     }
@@ -74,4 +76,11 @@ public class Unit : ScriptableObject
     {
         distanceComponent.DestroyCircle();
     }
+
+
+    public bool isInRangeToAttack(Unit otherUnit, float range)
+    {
+        return Vector3.Distance(this.arucoGameObject.transform.position, otherUnit.arucoGameObject.transform.position) < range * 500;
+    }
+
 }

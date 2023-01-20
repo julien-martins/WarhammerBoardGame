@@ -26,6 +26,7 @@ public class FightManager : MonoBehaviour
 
     public void Attacking(Unit attacking, Unit attacked, Weapon weapon, bool hitBoosted, bool dmgBoosted)
     {
+        Debug.Log("Dealing damages!");
         if (weapon.isRanged)
         {
             (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
@@ -34,13 +35,20 @@ public class FightManager : MonoBehaviour
 
             if (attacked.def <= attacking.rat +
                 tupleResultRoll.Item1)
-                //Special effects
+                Debug.Log("The weapon hit!");
                 if (tupleResultRoll.Item2)
                     //Is a crit!
                     ;
-                
-                
-                attacked.TakesDamage(
+
+            Debug.Log(weapon.pow);
+            Debug.Log(RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
+                        IsDamageBoosted(attacking, dmgBoosted)).Item1);
+
+
+            Debug.Log("Is hitting " + (weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
+                        IsDamageBoosted(attacking, dmgBoosted)).Item1) + "Againt an armor of " + attacked.arm);
+
+            attacked.TakesDamage(
                     weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
                         IsDamageBoosted(attacking, dmgBoosted)).Item1 -
                     attacked.arm, Random.Range(1, 6));
@@ -50,15 +58,16 @@ public class FightManager : MonoBehaviour
             (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
                     IsHitBoosted(attacking, hitBoosted));
             if (attacked.def <= attacking.mat + tupleResultRoll.Item1)
-                //Special effects
-                if (tupleResultRoll.Item2)
+                Debug.Log("The weapon hit!");
+            if (tupleResultRoll.Item2)
                     //is a crit!
                     ;
 
-                
-                attacked.TakesDamage(
+                Debug.Log("Is hitting " + weapon.pow+ attacking.str +  "Againt an armor of " + attacked.arm);
+            attacked.TakesDamage(
                     weapon.pow + attacking.str + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
                         IsDamageBoosted(attacking, dmgBoosted)).Item1 - attacked.arm, Random.Range(1, 6));
+
            
         }
 
@@ -88,10 +97,17 @@ public class FightManager : MonoBehaviour
         int _dicesToRoll = 1;
         int rollResult = 0;
         if (!isCrippled)
-            _dicesToRoll += 1;
-        if (isBoosted)
-            _dicesToRoll += 1;
+        {
+            Debug.Log("Is not crippeled");
 
+            _dicesToRoll += 1;
+        }
+        if (isBoosted)
+        {
+            Debug.Log("Is not boosted");
+            _dicesToRoll += 1;
+        }
+        Debug.Log("Rolling " + _dicesToRoll + " Dices");
         for (int indexDices = 0; indexDices < _dicesToRoll; indexDices++)
         {
             rolls[indexDices] = Random.Range(1, 6);
@@ -109,7 +125,7 @@ public class FightManager : MonoBehaviour
 
         }
 
-
+        Debug.Log("Rolling " + rollResult);
         return (rollResult,isCritique);
 
 

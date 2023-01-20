@@ -37,11 +37,11 @@ MonoBehaviour:
   workingParts: 01010101010101
   actualFocus: 0
   arucoGameObject: {fileID: 0}
-  distanceGameObject: {fileID: 0}
+  distanceComponent: {fileID: 0}
   UsedWeaponList: []
   Focus: 6
   lifePoints: 16
   warjackBattleGroup:
   - {fileID: 11400000, guid: b3592b4a56c74d349859e5141fc6127f, type: 2}
-  - {fileID: 11400000, guid: f987399bad98c9f4a931056c895c6b06, type: 2}
   - {fileID: 11400000, guid: c1aa71b68a1ecf1478aa96efc5750bee, type: 2}
+  - {fileID: 11400000, guid: f987399bad98c9f4a931056c895c6b06, type: 2}

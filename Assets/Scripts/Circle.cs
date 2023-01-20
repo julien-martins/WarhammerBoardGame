@@ -14,6 +14,8 @@ public class Circle : MonoBehaviour
 
     private Vector3 center;
 
+    public GameObject model;
+
 
     public bool isAlreadyEnabled = false;
 
