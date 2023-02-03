@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
   m_Name: FireFly
   m_EditorClassIdentifier: 
+  name: FireFly
   spd: 6
   str: 9
   mat: 6
@@ -37,8 +38,6 @@ MonoBehaviour:
   workingParts: 00010001010101
   actualFocus: 0
   arucoGameObject: {fileID: 0}
-  distanceGameObject: {fileID: 0}
+  distanceComponent: {fileID: 0}
   UsedWeaponList: []
-  dmgGrid:
-    v: 
   isArcNode: 0

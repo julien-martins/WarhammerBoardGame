@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
   m_Name: Vanquisher
   m_EditorClassIdentifier: 
+  name: Vanquisher
   spd: 4
   str: 11
   mat: 6
@@ -20,6 +21,7 @@ MonoBehaviour:
   arm: 19
   isOnFire: 0
   isKnockedDown: 0
+  isPlayable: 0
   isDisrupted: 0
   listOfWeapons:
   - name: Flame Belcher
@@ -35,6 +37,7 @@ MonoBehaviour:
   faction: 0
   workingParts: 00010001010101
   actualFocus: 0
-  dmgGrid:
-    v: 
+  arucoGameObject: {fileID: 0}
+  distanceComponent: {fileID: 0}
+  UsedWeaponList: []
   isArcNode: 0

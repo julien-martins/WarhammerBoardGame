@@ -29,7 +29,7 @@ public class FightManager : MonoBehaviour
         Debug.Log("Dealing damages!");
         if (weapon.isRanged)
         {
-            (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
+            (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart-1],
             IsHitBoosted(attacking, hitBoosted));
 
 
@@ -40,33 +40,31 @@ public class FightManager : MonoBehaviour
                     //Is a crit!
                     ;
 
-            Debug.Log(weapon.pow);
-            Debug.Log(RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking, dmgBoosted)).Item1);
+            int dmgRes = ( weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart-1],
+                IsDamageBoosted(attacking, dmgBoosted)).Item1);
 
-
-            Debug.Log("Is hitting " + (weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking, dmgBoosted)).Item1) + "Againt an armor of " + attacked.arm);
+            Debug.Log("Is hitting " + dmgRes + "Againt an armor of " + attacked.arm);
 
             attacked.TakesDamage(
-                    weapon.pow + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking, dmgBoosted)).Item1 -
+                    dmgRes -
                     attacked.arm, Random.Range(1, 6));
         }
         else
         {
-            (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
+            (int, bool) tupleResultRoll = RollDices(attacking.workingParts[weapon.correspondingWorkingPart-1],
                     IsHitBoosted(attacking, hitBoosted));
             if (attacked.def <= attacking.mat + tupleResultRoll.Item1)
                 Debug.Log("The weapon hit!");
             if (tupleResultRoll.Item2)
                     //is a crit!
                     ;
+                    Debug.Log(weapon.correspondingWorkingPart);
+            int dmgRes = ( weapon.pow+ attacking.str + RollDices(attacking.workingParts[weapon.correspondingWorkingPart -1],
+                IsDamageBoosted(attacking, dmgBoosted)).Item1);
 
-                Debug.Log("Is hitting " + weapon.pow+ attacking.str +  "Againt an armor of " + attacked.arm);
+                Debug.Log("Is hitting " + dmgRes +  "Againt an armor of " + attacked.arm);
             attacked.TakesDamage(
-                    weapon.pow + attacking.str + RollDices(attacking.workingParts[weapon.correspondingWorkingPart],
-                        IsDamageBoosted(attacking, dmgBoosted)).Item1 - attacked.arm, Random.Range(1, 6));
+                    dmgRes - attacked.arm, Random.Range(1, 6));
 
            
         }

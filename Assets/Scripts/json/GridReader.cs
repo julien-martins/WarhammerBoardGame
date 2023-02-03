@@ -21,8 +21,7 @@ public class GridReader : MonoBehaviour
 {
     private GridUnits gridUnits;
     
-    void Awake()
-    {
+    public void Initialize(){
         StreamReader reader = new StreamReader("Assets/Grids.json");
         var str = reader.ReadToEnd();
         reader.Close();

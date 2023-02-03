@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit : ScriptableObject
 {
 
-   
+   public string name;
     public int spd;
     public int str;
     public int mat;
@@ -22,6 +22,7 @@ public class Unit : ScriptableObject
     public int actualFocus;
     public GameObject arucoGameObject;
     public Circle distanceComponent;
+    protected GridReader _gridReader;
 
 
     public List<Weapon>  UsedWeaponList ;
@@ -47,23 +48,11 @@ public class Unit : ScriptableObject
         Cygnar,
         Cryx
     }
+    public virtual bool TakesDamage(int dmg, int collumn){
+        return true;
 
-    public bool TakesDamage(int dmg, int collumn)
-    {
-        if (dmg <= 0)
-        {
-            Debug.Log("No damages");
-            return false;
-        }
-        else
-        {
-
-            Debug.Log(dmg + " in collumn " + collumn);
-            
-
-            return true;
-        }
     }
+    
 
 
     public void DrawDistanceCircle()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67264b56ebf7d409e1ef5e63017765, type: 3}
   m_Name: Agathia
   m_EditorClassIdentifier: 
+  name: Agathia
   spd: 6
   str: 6
   mat: 7
@@ -32,7 +33,7 @@ MonoBehaviour:
   workingParts: 01010101010101
   actualFocus: 0
   arucoGameObject: {fileID: 0}
-  distanceGameObject: {fileID: 0}
+  distanceComponent: {fileID: 0}
   UsedWeaponList: []
   Focus: 7
   lifePoints: 16

@@ -40,7 +40,6 @@ public class Circle : MonoBehaviour
         }
         else
         {
-            Debug.Log("In circle");
             lineRenderer.material = green;
         }
 

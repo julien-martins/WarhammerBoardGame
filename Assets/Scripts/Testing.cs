@@ -26,21 +26,25 @@ public class Testing : MonoBehaviour
         caster2.arucoGameObject = GameObject.FindWithTag(caster2.name);
         caster2.distanceComponent = caster2.arucoGameObject.GetComponentInChildren<Circle>();
 
+
         for (int i = 0; i < caster1.warjackBattleGroup.Count; i++)
         {
             actualJack = caster1.warjackBattleGroup[i];
+                        Debug.Log(actualJack.name);
+
             actualJack.arucoGameObject = GameObject.FindWithTag(actualJack.name);
             actualJack.distanceComponent = actualJack.arucoGameObject.GetComponentInChildren<Circle>();
+            Debug.Log(_gridReader);
             actualJack.grid = _gridReader.GetGridUnits(actualJack.name);
         }
         for (int i = 0; i < caster2.warjackBattleGroup.Count; i++)
         {
             actualJack = caster2.warjackBattleGroup[i];
+            Debug.Log(actualJack.name);
 
             actualJack.arucoGameObject = GameObject.FindWithTag(actualJack.name);
             actualJack.distanceComponent = actualJack.arucoGameObject.GetComponentInChildren<Circle>();
             actualJack.grid = _gridReader.GetGridUnits(actualJack.name);
-
 
         }
 

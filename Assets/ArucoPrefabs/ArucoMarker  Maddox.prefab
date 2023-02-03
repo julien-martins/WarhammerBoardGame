@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1551708881569421115}
   m_Layer: 0
   m_Name: ArucoMarker  Maddox
-  m_TagString: Untagged
+  m_TagString: Maddox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864eb63d51879854cba0b34d1794949d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 0}
+  lineRenderer: {fileID: 5396943916951816564}
   lineCount: 60
   radius: 0
   width: 30

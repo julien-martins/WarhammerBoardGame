@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    public GridReader _gridReader;
     private List<Warcasters> _listWarcaster;
     private Warcasters _actualWarcaster;
     public Testing test;
@@ -62,6 +63,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+
+        //Initialize the grid reader
+        _gridReader.Initialize();
+
         _listWarcaster = new List<Warcasters>();
         test.StartTesting();
         SetRandomCaster();

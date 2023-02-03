@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e441835c1a48d9a4eb7bc87f948eb58b, type: 3}
   m_Name: Deathripper
   m_EditorClassIdentifier: 
+  name: Deathripper
   spd: 7
   str: 7
   mat: 5
@@ -32,8 +33,6 @@ MonoBehaviour:
   workingParts: 01010100010001
   actualFocus: 0
   arucoGameObject: {fileID: 0}
-  distanceGameObject: {fileID: 0}
+  distanceComponent: {fileID: 0}
   UsedWeaponList: []
-  dmgGrid:
-    v: 
   isArcNode: 1

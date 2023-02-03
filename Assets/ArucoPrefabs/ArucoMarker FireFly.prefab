@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2822411218053489676}
   m_Layer: 0
   m_Name: ArucoMarker FireFly
-  m_TagString: Untagged
+  m_TagString: FireFly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -641,6 +641,7 @@ MonoBehaviour:
   width: 30
   red: {fileID: 2100000, guid: edff0e56dd5f1424688617c697177ece, type: 2}
   green: {fileID: 2100000, guid: 34e890fc50f03814daac3dd16e73b140, type: 2}
+  model: {fileID: 0}
   isAlreadyEnabled: 0
 --- !u!120 &1595429560087024540
 LineRenderer:

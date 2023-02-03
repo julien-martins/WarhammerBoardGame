@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67264b56ebf7d409e1ef5e63017765, type: 3}
   m_Name: Kreoss
   m_EditorClassIdentifier: 
+  name: Kreoss
   spd: 5
   str: 7
   mat: 7
