@@ -59,6 +59,7 @@ public class Unit : ScriptableObject
         {
 
             Debug.Log(dmg + " in collumn " + collumn);
+            
 
             return true;
         }
