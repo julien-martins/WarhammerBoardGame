@@ -186,6 +186,10 @@ public class ButtonHandeler : MonoBehaviour
                                 _movedInTurn = false;
 
                             }
+                        else
+                        {
+                            previouselyPlayedUnit = fighters.Item1;
+                        }
 
 
                         if (ButtonsList[8].GameObject().activeSelf)

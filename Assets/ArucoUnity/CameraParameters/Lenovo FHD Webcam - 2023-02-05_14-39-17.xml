@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArucoCameraParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CalibrationDateTime>2023-02-03T09:43:39.6733886+01:00</CalibrationDateTime>
+  <CalibrationDateTime>2023-02-05T14:39:17.1684957+01:00</CalibrationDateTime>
   <CameraNumber>1</CameraNumber>
   <ImageHeights>
     <int>1080</int>
@@ -11,20 +11,20 @@
   <CalibrationFlagsValue>256</CalibrationFlagsValue>
   <FixAspectRatioValue>0</FixAspectRatioValue>
   <ReprojectionErrors>
-    <double>0.65878395037602588</double>
+    <double>1.1574049171200929</double>
   </ReprojectionErrors>
   <CameraMatricesType>CV_64F</CameraMatricesType>
   <CameraMatricesValues>
     <ArrayOfArrayOfDouble>
       <ArrayOfDouble>
-        <double>1066.1705483367662</double>
+        <double>1057.5282946512348</double>
         <double>0</double>
-        <double>963.832644195853</double>
+        <double>948.94260096156768</double>
       </ArrayOfDouble>
       <ArrayOfDouble>
         <double>0</double>
-        <double>1068.2069857546003</double>
-        <double>478.5459931243883</double>
+        <double>1065.3870103402194</double>
+        <double>455.11614876872483</double>
       </ArrayOfDouble>
       <ArrayOfDouble>
         <double>0</double>
@@ -37,11 +37,11 @@
   <DistCoeffsValues>
     <ArrayOfArrayOfDouble>
       <ArrayOfDouble>
-        <double>0.0070701496349317768</double>
-        <double>-0.042619613216597227</double>
-        <double>-0.0021228982364047263</double>
-        <double>-0.0011620640403137998</double>
-        <double>0.021993094388267798</double>
+        <double>0.023768956033293528</double>
+        <double>-0.067940440179855358</double>
+        <double>-0.012984573955312559</double>
+        <double>-0.0028872179307672789</double>
+        <double>0.030952136683212617</double>
       </ArrayOfDouble>
     </ArrayOfArrayOfDouble>
   </DistCoeffsValues>
